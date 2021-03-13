@@ -3,7 +3,7 @@ package agents;
 public class QLearnerMiniMax implements Agent {
 
 
-    private double Q[], alpha, alphadecay, temp, tempdecay, V[], pi[][], gamma;
+    private double Q[], alpha, alphadecay, temp, tempdecay, V[], pi[][], gamma, target;
     private int numberOfActions;
 
     public QLearnerMiniMax(int numberOfActions) {
@@ -11,22 +11,26 @@ public class QLearnerMiniMax implements Agent {
         V = new double[numberOfActions];
         pi = new double[numberOfActions][numberOfActions];
         for (int i=0; i<numberOfActions; i++) {
-            Q[i] = 1;
+            Q[i] = -0.1+Math.random()*0.2;
             V[i] = 1;
-            for (int j=0; j<numberOfActions; j++) {pi[j][i] = 1/numberOfActions;}
+            for (int j=0; j<numberOfActions; j++){ pi[i][j] = 1/numberOfActions;}
         }
-        temp = 0.1;
+        temp = 01.;
         tempdecay = 1.0;
-        alpha = 1.0;
+        alpha = 0.77;
         alphadecay = 1.0;
         gamma = 1.0;
     }
 
     public double actionProb(int index) {
-        double sum = 0.0;
-        for (double a : Q)
-            sum += Math.exp(a/temp);
-        return Math.exp(Q[index]/temp)/sum;
+        double sum = 0;
+
+        for (int i=0; i<numberOfActions; i++) { sum += pi[index][i] * Q[index]; }
+        for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], pi[index][i] * sum); }
+        double max = 0;
+        for (int i=0; i<numberOfActions-1; i++) { max = Math.max(pi[index][i], pi[index][i+1]); }
+        V[index] = sum;
+        return Math.exp(max)/temp;
     }
 
     public int selectAction() {
@@ -39,19 +43,10 @@ public class QLearnerMiniMax implements Agent {
         return index-1;
     }
 
-    public void update(int own, int other, double reward) {
-        update1(own, other, reward);
-    }
+    public void update(int own, int other, double reward) { update(own, reward); }
 
-    private void update1(int index, int nextindex, double reward) {
-        Q[index] = (1-alpha) * Q[index] + alpha * (reward + gamma * V[nextindex]);
-        double sum = 0;
-        for (int i=0; i<numberOfActions; i++) { sum = sum + pi[index][selectAction()] * Q[selectAction()];}
-
-        for (int i=0; i<numberOfActions; i++) {
-            pi[index][i] = Math.max(pi[nextindex][i], Math.min(actionProb(i), sum));
-            V[index] = Math.min(nextindex, sum);
-        }
+    private void update(int index, double reward) {
+        Q[index] = (1-alpha) * Q[index] + alpha * (reward + gamma * V[index]);
         alpha*=alphadecay;
     }
 
