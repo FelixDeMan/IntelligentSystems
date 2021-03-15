@@ -3,7 +3,7 @@ package agents;
 public class QLearnerMiniMax implements Agent {
 
 
-    private double Q[], alpha, alphadecay, V[], pi[][], gamma, target;
+    private double Q[], alpha, alphadecay, V[], pi[][], gamma;
     private int numberOfActions;
 
     public QLearnerMiniMax(int numberOfActions) {
@@ -13,16 +13,15 @@ public class QLearnerMiniMax implements Agent {
         for (int i=0; i<numberOfActions; i++) {
             Q[i] = 1;
             V[i] = 1;
-            for (int j=0; j<numberOfActions; j++){ pi[i][j] = 1/numberOfActions;}
+            for (int j=0; j<numberOfActions; j++){ pi[i][j] = (1 / ((double) numberOfActions));}
         }
-        alpha = 0.01;
-        alphadecay = 0.98;
+        alpha = 0.1;
+        alphadecay = 0.8;
         gamma = 0.01;
     }
 
     public double actionProb(int index) {
         double sum = 0;
-
         for (int i=0; i<numberOfActions-1; i++) { sum += Math.min(pi[index][i], pi[index][i+1]) * Q[index]; }
         V[index] = sum;
         for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], V[index]); }

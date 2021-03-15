@@ -6,6 +6,7 @@ public class QLearnerNash implements Agent {
     private int numberOfActions;
 
     public QLearnerNash(int numberOfActions) {
+        numberOfActions = 2;
         Q = new double[numberOfActions][numberOfActions];
         nashQ = new double[numberOfActions];
         pi = new double[numberOfActions][numberOfActions];
@@ -17,11 +18,10 @@ public class QLearnerNash implements Agent {
             }
 
         }
-        numberOfActions = 2;
 
 
-        alpha = 0.01;
-        alphadecay = 0.98;
+        alpha = 0.1;
+        alphadecay = 0.8;
         gamma = 0.01;
         reward = 0;
     }
