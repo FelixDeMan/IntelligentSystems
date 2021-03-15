@@ -3,7 +3,7 @@ package agents;
 public class QLearnerMiniMax implements Agent {
 
 
-    private double Q[], alpha, alphadecay, temp, tempdecay, V[], pi[][], gamma, target;
+    private double Q[], alpha, alphadecay, V[], pi[][], gamma, target;
     private int numberOfActions;
 
     public QLearnerMiniMax(int numberOfActions) {
@@ -15,8 +15,6 @@ public class QLearnerMiniMax implements Agent {
             V[i] = 1;
             for (int j=0; j<numberOfActions; j++){ pi[i][j] = 1/numberOfActions;}
         }
-        temp = 0.2;
-        tempdecay = 0.8;
         alpha = 0.01;
         alphadecay = 0.98;
         gamma = 0.01;
@@ -34,7 +32,6 @@ public class QLearnerMiniMax implements Agent {
     }
 
     public int selectAction() {
-        temp *= tempdecay;
         double target = Math.random();
         double collected = actionProb(0);
         int index = 1;

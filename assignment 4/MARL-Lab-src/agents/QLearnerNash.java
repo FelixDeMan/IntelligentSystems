@@ -2,30 +2,41 @@ package agents;
 
 public class QLearnerNash implements Agent {
 
-    private double Q[][], alpha, alphadecay, temp, tempdecay, gamma;
+    private double Q[][], alpha, alphadecay, gamma, nashQ[], reward, pi[][];
     private int numberOfActions;
 
     public QLearnerNash(int numberOfActions) {
         Q = new double[numberOfActions][numberOfActions];
+        nashQ = new double[numberOfActions];
+        pi = new double[numberOfActions][numberOfActions];
         for (int i=0; i<numberOfActions; i++) {
-            for (int j=0; j<numberOfActions; j++) Q[i][j] = 0; }
-        temp = 0.2;
-        tempdecay = 0.8;
+            nashQ[i] = 0;
+            for (int j = 0; j < numberOfActions; j++) {
+                Q[i][j] = 0;
+                pi[i][j] = 1/numberOfActions;
+            }
+        }
         alpha = 0.01;
         alphadecay = 0.98;
         gamma = 0.01;
+        reward = 0;
     }
 
     public double actionProb(int index) {
-        double sum = 0;
-        for(int i=0; i<numberOfActions; i++) {
-            sum += actionProb(i);
+
+        double mult = 0, max = -1000000;
+        for (int i=0; i<numberOfActions-1; i++) {
+            max = Math.max(pi[index][i], pi[index][i+1]);
         }
-        return gamma * sum;
+        for (int i=0; i<numberOfActions; i++) {
+            mult *= pi[index][i];
+            pi[index][i] = Math.max(pi[index][i], nashQ[index]);
+        }
+        nashQ[index] = mult * max;
+        return max;
     }
 
     public int selectAction() {
-        temp *= tempdecay;
         double target = Math.random();
         double collected = actionProb(0);
         int index = 1;
@@ -39,7 +50,10 @@ public class QLearnerNash implements Agent {
     }
 
     private void update(int index, double reward) {
-        for (int i=0; i<numberOfActions; i++) { Q[index][i] = (1-alpha) * Q[index][i] + alpha * (reward + gamma * Q[index][i]); }
+        for (int i=0; i<numberOfActions; i++) {
+            Q[index][i] = (1-alpha) * Q[index][i] + alpha * (reward + gamma * nashQ[index]);
+        }
+        alpha*=alphadecay;
     }
 
     @Override

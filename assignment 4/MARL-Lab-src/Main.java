@@ -12,13 +12,13 @@ public class Main {
 		ValueWindow vw2 = new ValueWindow("QValues Agent 1");
 		
 		//Game game = new PrisonersDilemma();
-		//Game game = new MatchingPennies();
-		Game game = new BattleOfSexes();
+		Game game = new MatchingPennies();
+		//Game game = new BattleOfSexes();
 		
 		int cnt = 0;
 		for (int i=0; i<5; i++) {
-			Agent agent1 = new QLearnerBoltzmann(2);
-			Agent agent2 = new QLearnerBoltzmann(2);
+			Agent agent1 = new QLearnerNash(2);
+			Agent agent2 = new QLearnerNash(2);
 			while (cnt < 5000) {
 				int a1 = agent1.selectAction();
 				int a2 = agent2.selectAction();
@@ -34,7 +34,7 @@ public class Main {
 				cnt++;
 				// To slow down the visualization. 
 				// If removed, the end result is show pretty much instantly. 
-				//try {Thread.sleep(4);} catch (InterruptedException e) {}
+				try {Thread.sleep(4);} catch (InterruptedException e) {}
 			}
 			pw.newPath();
 			vw1.newPath();
