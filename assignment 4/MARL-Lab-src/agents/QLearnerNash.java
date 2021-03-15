@@ -20,7 +20,7 @@ public class QLearnerNash implements Agent {
         }
 
 
-        alpha = 0.1;
+        alpha = 0.01;
         alphadecay = 0.8;
         gamma = 0.01;
         reward = 0;
