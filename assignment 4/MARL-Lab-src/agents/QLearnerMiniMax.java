@@ -11,26 +11,26 @@ public class QLearnerMiniMax implements Agent {
         V = new double[numberOfActions];
         pi = new double[numberOfActions][numberOfActions];
         for (int i=0; i<numberOfActions; i++) {
-            Q[i] = -0.1+Math.random()*0.2;
+            Q[i] = 1;
             V[i] = 1;
             for (int j=0; j<numberOfActions; j++){ pi[i][j] = 1/numberOfActions;}
         }
-        temp = 01.;
-        tempdecay = 1.0;
-        alpha = 0.77;
+        temp = 0.2;
+        tempdecay = 0.99;
+        alpha = 0.01;
         alphadecay = 1.0;
-        gamma = 1.0;
+        gamma = 0.8;
     }
 
     public double actionProb(int index) {
         double sum = 0;
 
         for (int i=0; i<numberOfActions; i++) { sum += pi[index][i] * Q[index]; }
-        for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], pi[index][i] * sum); }
+        V[index] = sum;
+        for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], pi[index][i] * V[index]); }
         double max = 0;
         for (int i=0; i<numberOfActions-1; i++) { max = Math.max(pi[index][i], pi[index][i+1]); }
-        V[index] = sum;
-        return Math.exp(max)/temp;
+        return max;
     }
 
     public int selectAction() {
@@ -43,7 +43,8 @@ public class QLearnerMiniMax implements Agent {
         return index-1;
     }
 
-    public void update(int own, int other, double reward) { update(own, reward); }
+    public void update(int own, int other, double reward) {
+        update(own, reward); }
 
     private void update(int index, double reward) {
         Q[index] = (1-alpha) * Q[index] + alpha * (reward + gamma * V[index]);

@@ -2,19 +2,22 @@ package agents;
 
 public class QLearnerNash implements Agent {
 
-    private double Q[], alpha, alphadecay, temp, tempdecay;
+    private double Q[][], alpha, alphadecay, temp, tempdecay, gamma;
+    private int numberOfActions;
 
     public QLearnerNash(int numberOfActions) {
-        Q = new double[numberOfActions];
-        for (int i=0; i<numberOfActions; i++)
-            Q[i] = 0;
+        Q = new double[numberOfActions][numberOfActions];
+        for (int i=0; i<numberOfActions; i++) {
+            for (int j=0; j<numberOfActions; j++) Q[i][j] = 0; }
         temp = 0.1;
         tempdecay = 1.0;
         alpha = 0.01;
         alphadecay = 1.0;
+        gamma = 1.0;
     }
 
     public double actionProb(int index) {
+        return Math.random();
     }
 
     public int selectAction() {
@@ -32,11 +35,12 @@ public class QLearnerNash implements Agent {
     }
 
     private void update(int index, double reward) {
+        for (int i=0; i<numberOfActions; i++) { Q[index][i] = (1-alpha) * Q[index][i] + alpha * (reward + gamma * Q[index][i]); }
     }
 
     @Override
     public double getQ(int i) {
-        return Q[i];
+        return Math.max(Q[i][0], Q[i][1]);
     }
 
 }
