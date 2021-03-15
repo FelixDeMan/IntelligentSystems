@@ -9,15 +9,19 @@ public class QLearnerNash implements Agent {
         Q = new double[numberOfActions][numberOfActions];
         for (int i=0; i<numberOfActions; i++) {
             for (int j=0; j<numberOfActions; j++) Q[i][j] = 0; }
-        temp = 0.1;
-        tempdecay = 1.0;
+        temp = 0.2;
+        tempdecay = 0.8;
         alpha = 0.01;
-        alphadecay = 1.0;
-        gamma = 1.0;
+        alphadecay = 0.98;
+        gamma = 0.01;
     }
 
     public double actionProb(int index) {
-        return Math.random();
+        double sum = 0;
+        for(int i=0; i<numberOfActions; i++) {
+            sum += actionProb(i);
+        }
+        return gamma * sum;
     }
 
     public int selectAction() {

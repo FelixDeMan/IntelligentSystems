@@ -16,19 +16,19 @@ public class QLearnerMiniMax implements Agent {
             for (int j=0; j<numberOfActions; j++){ pi[i][j] = 1/numberOfActions;}
         }
         temp = 0.2;
-        tempdecay = 0.99;
+        tempdecay = 0.8;
         alpha = 0.01;
-        alphadecay = 1.0;
-        gamma = 0.8;
+        alphadecay = 0.98;
+        gamma = 0.01;
     }
 
     public double actionProb(int index) {
         double sum = 0;
 
-        for (int i=0; i<numberOfActions; i++) { sum += pi[index][i] * Q[index]; }
+        for (int i=0; i<numberOfActions-1; i++) { sum += Math.min(pi[index][i], pi[index][i+1]) * Q[index]; }
         V[index] = sum;
-        for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], pi[index][i] * V[index]); }
-        double max = 0;
+        for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], V[index]); }
+        double max = -1000000;
         for (int i=0; i<numberOfActions-1; i++) { max = Math.max(pi[index][i], pi[index][i+1]); }
         return max;
     }
