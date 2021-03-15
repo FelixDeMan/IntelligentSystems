@@ -15,8 +15,10 @@ public class QLearnerNash implements Agent {
                 Q[i][j] = 0;
                 pi[i][j] = (1 / ((double) numberOfActions));
             }
-            
+
         }
+        numberOfActions = 2;
+
 
         alpha = 0.01;
         alphadecay = 0.98;
@@ -26,11 +28,10 @@ public class QLearnerNash implements Agent {
 
     public double actionProb(int index) {
         double mult = 0, max = -1000000;
-        System.out.println(numberOfActions);
-        for (int i=0; i<numberOfActions; i++) {
-            System.out.println("test");
-            System.out.println(Math.max(pi[index][i], pi[index][i+1]));
-
+        numberOfActions = 2;
+      //  System.out.println(numberOfActions);
+        for (int i=0; i<numberOfActions-1; i++) {
+            
             max = Math.max(pi[index][i], pi[index][i+1]);
            // System.out.println(pi[index][i] + " " + pi[index][i+1]);
            // System.out.println(max);
@@ -59,6 +60,7 @@ public class QLearnerNash implements Agent {
     }
 
     private void update(int index, double reward) {
+        //System.out.println(numberOfActions); -> 0's only
         for (int i=0; i<numberOfActions; i++) {
             Q[index][i] = (1-alpha) * Q[index][i] + alpha * (reward + gamma * nashQ[index]);
         }
