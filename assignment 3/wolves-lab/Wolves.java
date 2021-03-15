@@ -67,10 +67,10 @@ public class Wolves {
         // You should put your own wolves in the array here!!
         Wolf[] wolvesPool = new Wolf[5];
         wolvesPool[0] = new SmarterWolf();
-        wolvesPool[1] = new SmarterWolf();
-        wolvesPool[2] = new SmarterWolf();
-        wolvesPool[3] = new RandomWolf();
-        wolvesPool[4] = new RandomWolf();
+        wolvesPool[1] = new SmartWolf();
+        wolvesPool[2] = new SmartWolf();
+        wolvesPool[3] = new SmarterWolf();
+        wolvesPool[4] = new SmarterWolf();
 
         // Below code will select three random wolves from the pool.
         // Make the pool as large as you want, but not < numWolves
@@ -78,6 +78,8 @@ public class Wolves {
         generated.add(0);
         generated.add(1);
         generated.add(2);
+        //generated.add(3);
+        //generated.add(4);
 
       /*  while (generated.size() < numWolves) {
             Integer next = r.nextInt(wolvesPool.length);

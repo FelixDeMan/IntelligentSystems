@@ -20,14 +20,15 @@ public class SmarterWolf implements Wolf {
                 System.out.println("Gang gang");
                 wolfGang = true;
             }
-            if(wolvesSight.get(1)[0] > 0){
+
+            else if(wolvesSight.get(1)[0] > 0){
                 mymove[0] = -1;
             }
             else{
                 mymove[0] = 1;
             }
 
-            if(wolvesSight.get(1)[0] > 0){
+            if(wolvesSight.get(1)[1] > 0){
                 mymove[1] = -1;
             }
             else{
@@ -68,11 +69,11 @@ public class SmarterWolf implements Wolf {
                     mymove[0] = 1;
                 }
 
-                if(wolvesSight.get(1)[0] > 0){
-                    mymove[1] = 1;
+                if(wolvesSight.get(1)[1] > 0){
+                    mymove[1] = -1;
                 }
                 else{
-                    mymove[1] = -1;
+                    mymove[1] = 1;
                 }
             }
         }

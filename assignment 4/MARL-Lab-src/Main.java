@@ -11,8 +11,8 @@ public class Main {
 		ValueWindow vw1 = new ValueWindow("QValues Agent 0");
 		ValueWindow vw2 = new ValueWindow("QValues Agent 1");
 		
-		//Game game = new PrisonersDilemma();
-		Game game = new MatchingPennies();
+		Game game = new PrisonersDilemma();
+		//Game game = new MatchingPennies();
 		//Game game = new BattleOfSexes();
 		
 		int cnt = 0;

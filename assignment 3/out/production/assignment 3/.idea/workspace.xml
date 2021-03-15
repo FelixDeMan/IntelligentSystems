@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4d801b01-a4e6-4967-b8f6-1ed8b6165630" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1p9lOuhWu4SSzZ1woB7bpMlxoHL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager">
+    <configuration name="WolvesApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WolvesApp" />
+      <module name="wolves-lab" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.WolvesApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4d801b01-a4e6-4967-b8f6-1ed8b6165630" name="Default Changelist" comment="" />
+      <created>1614603162723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614603162723</updated>
+      <workItem from="1614603163889" duration="2613000" />
+      <workItem from="1615287881080" duration="1127000" />
+      <workItem from="1615314366875" duration="8098000" />
+      <workItem from="1615386979110" duration="2697000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="671" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1615314431045">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="671" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1615314431045" />
+    <state width="1853" height="251" key="GridCell.Tab.0.bottom" timestamp="1615389390269">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="250" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.-125.1920.1040@0.0.1920.1040" timestamp="1614774082458" />
+    <state width="1853" height="251" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615389390269" />
+    <state width="1853" height="251" key="GridCell.Tab.0.center" timestamp="1615389390269">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="250" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.-125.1920.1040@0.0.1920.1040" timestamp="1614774082456" />
+    <state width="1853" height="251" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615389390269" />
+    <state width="1853" height="251" key="GridCell.Tab.0.left" timestamp="1615389390269">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="250" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.-125.1920.1040@0.0.1920.1040" timestamp="1614774082456" />
+    <state width="1853" height="251" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615389390269" />
+    <state width="1853" height="251" key="GridCell.Tab.0.right" timestamp="1615389390269">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="250" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.-125.1920.1040@0.0.1920.1040" timestamp="1614774082458" />
+    <state width="1853" height="251" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615389390269" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1615388340706">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615388340706" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/WolvesApp.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
