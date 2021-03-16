@@ -7,26 +7,32 @@ public class QLearnerMiniMax implements Agent {
     private int numberOfActions;
 
     public QLearnerMiniMax(int numberOfActions) {
+        this.numberOfActions = numberOfActions;
         Q = new double[numberOfActions];
         V = new double[numberOfActions];
         pi = new double[numberOfActions][numberOfActions];
         for (int i=0; i<numberOfActions; i++) {
             Q[i] = 1;
             V[i] = 1;
-            for (int j=0; j<numberOfActions; j++){ pi[i][j] = (1 / ((double) numberOfActions));}
+            for (int j=0; j<numberOfActions; j++){ pi[i][j] = (1 / ((double) numberOfActions));
+            System.out.println("pi initial: " + pi[i][j]);}
         }
-        alpha = 0.1;
-        alphadecay = 0.8;
+        alpha = 0.01;
+        alphadecay = 1.0;
         gamma = 0.01;
     }
 
     public double actionProb(int index) {
         double sum = 0;
+        numberOfActions = 2;
         for (int i=0; i<numberOfActions-1; i++) { sum += Math.min(pi[index][i], pi[index][i+1]) * Q[index]; }
         V[index] = sum;
-        for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], V[index]); }
-        double max = -1000000;
+        System.out.println("sum" + sum);
+        for (int i=0; i<numberOfActions; i++) { pi[index][i] = Math.max(pi[index][i], V[index]);
+        System.out.println("pi" + pi[index][i]);}
+        double max = 0;
         for (int i=0; i<numberOfActions-1; i++) { max = Math.max(pi[index][i], pi[index][i+1]); }
+        System.out.println("max" + max);
         return max;
     }
 
@@ -44,6 +50,7 @@ public class QLearnerMiniMax implements Agent {
 
     private void update(int index, double reward) {
         Q[index] = (1-alpha) * Q[index] + alpha * (reward + gamma * V[index]);
+        System.out.println(Q[index]);
         alpha*=alphadecay;
     }
 

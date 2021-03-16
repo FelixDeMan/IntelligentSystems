@@ -17,7 +17,7 @@ public class Main {
 		
 		int cnt = 0;
 		for (int i=0; i<5; i++) {
-			Agent agent1 = new QLearnerNash(2);
+			Agent agent1 = new QLearnerMiniMax(2);
 			Agent agent2 = new QLearnerNash(2);
 			while (cnt < 5000) {
 				int a1 = agent1.selectAction();
