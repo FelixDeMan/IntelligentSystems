@@ -11,14 +11,14 @@ public class Main {
 		ValueWindow vw1 = new ValueWindow("QValues Agent 0");
 		ValueWindow vw2 = new ValueWindow("QValues Agent 1");
 		
-		Game game = new PrisonersDilemma();
+		//Game game = new PrisonersDilemma();
 		//Game game = new MatchingPennies();
-		//Game game = new BattleOfSexes();
+		Game game = new BattleOfSexes();
 		
 		int cnt = 0;
 		for (int i=0; i<5; i++) {
 			Agent agent1 = new QLearnerMiniMax(2);
-			Agent agent2 = new QLearnerNash(2);
+			Agent agent2 = new QLearnerMiniMax(2);
 			while (cnt < 5000) {
 				int a1 = agent1.selectAction();
 				int a2 = agent2.selectAction();

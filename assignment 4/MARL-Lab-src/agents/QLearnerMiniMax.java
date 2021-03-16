@@ -17,8 +17,8 @@ public class QLearnerMiniMax implements Agent {
             for (int j=0; j<numberOfActions; j++){ pi[i][j] = (1 / ((double) numberOfActions));
             System.out.println("pi initial: " + pi[i][j]);}
         }
-        alpha = 0.01;
-        alphadecay = 1.0;
+        alpha = 0.1;
+        alphadecay = 0.8;
         gamma = 0.01;
     }
 
